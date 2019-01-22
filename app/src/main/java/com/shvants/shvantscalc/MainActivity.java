@@ -1,13 +1,121 @@
 package com.shvants.shvantscalc;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String ZERO = "0";
+    public static final String DOT = ".";
+    public static final String EQUAL = "=";
+    public static final String UOE_MESSAGE = "НА НОЛЬ ДЕЛИТЬ НЕЛЬЗЯ!";
+    public static final Character MUL_SIGN = '*';
+    public static final Character DIV_SIGN = '/';
+    public static final String ZERO_DIV = "/0";
+    public static final String PATTERN = "#.########";
+    public static final int MAX_TEXT_SIZE = 45;
+    public static final int MEDIUM_TEXT_SIZE = 30;
+    public static final int MIN_TEXT_SIZE = 15;
+    public static final char DIV_SIGN_UNICODE = '\u00f7';
+    public static final char MUL_SIGN_UNICODE = '\u00D7';
+    public static final String PERCENT_SIGN = "%";
+    public static final String ONE_PERCENT = "/100";
+
+    TextView displayLine;
+    TextView enterLine;
+    DecimalFormat numberFormat = new DecimalFormat(PATTERN);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        displayLine = findViewById(R.id.displayLine);
+        enterLine = findViewById(R.id.enterLine);
+    }
+
+    public void clickNumber(View view){
+        Button button = (Button) view;
+        String number = button.getText().toString();
+        String line = enterLine.getText().toString();
+        Character last = line.charAt(line.length() - 1);
+        int lastIndex = line.length() - 1;
+
+        if (line.length() < 14){
+            enterLine.setTextSize(MAX_TEXT_SIZE);
+        } else if (line.length() < 20){
+            enterLine.setTextSize(MEDIUM_TEXT_SIZE);
+        } else {
+            enterLine.setTextSize(MIN_TEXT_SIZE);
+        }
+
+        if (line.equals(UOE_MESSAGE) || line.equals(ZERO)){
+            enterLine.setText(number);
+        }else if (last == ZERO.charAt(0)
+                && !Character.isDigit(line.charAt(line.length() - 2))
+                && line.charAt(line.length() - 2) != DOT.charAt(0)){
+            enterLine.setText(line.substring(0, lastIndex).concat(number));
+        } else if (Character.isDigit(last) || last == DOT.charAt(0)){
+            enterLine.setText(line.concat(number));
+        } else {
+            enterLine.setText(line.concat(number));
+        }
+    }
+
+    public void clickSign(View view){
+        Button button = (Button) view;
+        String sign = button.getText().toString();
+        String line = enterLine.getText().toString();
+        if ( Character.isDigit( line.charAt(line.length() - 1) ) ){
+            enterLine.setText(line.concat(sign));
+        }
+        if (sign.equals(PERCENT_SIGN)){
+            clickEqual(view);
+        }
+    }
+
+    public void clickDot(View view){
+        String line = enterLine.getText().toString();
+        enterLine.setText(line.concat(DOT));
+    }
+
+    public void clickCancel(View view){
+        enterLine.setText(ZERO);
+    }
+
+    public void moveOneCharacter(View view){
+
+        String line = enterLine.getText().toString();
+        if (line.length() == 1){
+            clickCancel(view);
+        } else {
+            enterLine.setText(line.substring(0, line.length() - 1));
+        }
+    }
+
+    public void clickEqual(View view){
+        Double result;
+        String line = enterLine.getText().toString();
+        String prepareLine = line.replace(DIV_SIGN_UNICODE, DIV_SIGN)
+                .replace(MUL_SIGN_UNICODE, MUL_SIGN)
+                .replace(PERCENT_SIGN, ONE_PERCENT);
+        if(prepareLine.contains(ZERO_DIV)){
+            displayLine.setText(line.concat(EQUAL));
+            enterLine.setText(UOE_MESSAGE);
+            enterLine.setTextSize(MIN_TEXT_SIZE);
+            return;
+        }
+        Expression expression = new ExpressionBuilder(prepareLine).build();
+        result = expression.evaluate();
+        displayLine.setText(line.concat(EQUAL));
+        enterLine.setText(numberFormat.format(result));
     }
 }
