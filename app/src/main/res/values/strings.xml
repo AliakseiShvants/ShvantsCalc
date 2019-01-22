@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simple Calculator</string>
+    <string name="app_name">Shvants Calc</string>
     <string name="cancel">C</string>
     <string name="leftShift">⇦</string>
     <string name="percentSign">%</string>

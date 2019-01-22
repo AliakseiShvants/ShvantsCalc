@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void moveOneCharacter(View view){
-
         String line = enterLine.getText().toString();
         if (line.length() == 1){
             clickCancel(view);
