@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/display"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/displayLine"
@@ -22,9 +22,9 @@
         <TextView
             android:id="@+id/enterLine"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:text="@string/zero"
-            android:textSize="45sp"
+            android:textSize="50sp"
             android:gravity="end"/>
     </LinearLayout>
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -44,7 +44,7 @@
             android:text="@string/cancel"
             android:onClick="clickCancel"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -52,7 +52,7 @@
             android:text="@string/leftShift"
             android:onClick="moveOneCharacter"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -60,7 +60,7 @@
             android:text="@string/percentSign"
             android:onClick="clickSign"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:textSize="30sp"
@@ -84,7 +84,7 @@
             android:text="@string/seven"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -92,7 +92,7 @@
             android:text="@string/eight"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -100,7 +100,7 @@
             android:text="@string/nine"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -123,7 +123,7 @@
             android:text="@string/four"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -131,7 +131,7 @@
             android:text="@string/five"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -139,7 +139,7 @@
             android:text="@string/six"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -154,7 +154,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -162,7 +162,7 @@
             android:text="@string/one"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -170,7 +170,7 @@
             android:text="@string/two"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -178,7 +178,7 @@
             android:text="@string/three"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -193,14 +193,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
             android:textSize="30sp"
             android:onClick="clickNumber"/>
         <Button
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
@@ -210,7 +210,7 @@
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:background="@drawable/button_border"
             android:onClick="clickDot"
@@ -220,7 +220,7 @@
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="80dp"
             android:layout_weight="1"
             android:background="@android:color/holo_orange_dark"
             android:onClick="clickEqual"
