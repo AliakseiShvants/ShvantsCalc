@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 && line.charAt(line.length() - 2) != DOT){
             enterLine.setText(line.substring(0, lastIndex).concat(number));
         }
-        else {
+        else if (last != PERCENT_SIGN.charAt(0)){
             enterLine.setText(line.concat(number));
         }
     }
@@ -86,11 +86,13 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) view;
         String sign = button.getText().toString();
         String line = enterLine.getText().toString();
-        if (Character.isDigit(line.charAt(line.length() - 1))){
+        int lastIndex = line.length() - 1;
+        Character last = line.charAt(lastIndex);
+
+        if (Character.isDigit(last)){
             enterLine.setText(line.concat(sign));
-        }
-        if (sign.equals(PERCENT_SIGN)){
-            clickEqual(view);
+        } else {
+            enterLine.setText(line.substring(0, lastIndex).concat(sign));
         }
     }
 
