@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int MEDIUM_TEXT_SIZE = 40;
     public static final int MIN_TEXT_SIZE = 30;
     public static final int UOE_TEXT_SIZE = 25;
-    public static final int MEDIUM_LINE_LENGTH = 13;
-    public static final int MAX_LINE_LENGTH = 16;
+    public static final int MEDIUM_LINE_LENGTH = 10;
+    public static final int MAX_LINE_LENGTH = 15;
 
     TextView displayLine;
     TextView enterLine;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Character.isDigit(last)){
             enterLine.setText(line.concat(sign));
-        } else {
+        } else if (last != DOT && !Character.isDigit(line.charAt(lastIndex - 1))){
             enterLine.setText(line.substring(0, lastIndex).concat(sign));
         }
     }
@@ -99,18 +99,19 @@ public class MainActivity extends AppCompatActivity {
     public void clickDot(View view){
         String line = enterLine.getText().toString();
         String[] operands = line.split(SPLIT_PATTERN);
-        String last = operands[operands.length - 1];
-        Character[] operatorArr = new Character[]{
-                MUL_SIGN_UNICODE, DIV_SIGN_UNICODE, ADD_SIGN, DIFF_SIGN
-        };
-        boolean flag = false;
-        for (Character sign : operatorArr){
-            if (last.equals(sign.toString())){
-                flag = true;
-                break;
-            }
-        }
-        if (!last.contains(DOT.toString()) || flag){
+        String lastOperand = operands[operands.length - 1];
+        Character lastChar = line.charAt(line.length() - 1);
+//        Character[] operatorArr = new Character[]{
+//                MUL_SIGN_UNICODE, DIV_SIGN_UNICODE, ADD_SIGN, DIFF_SIGN
+//        };
+//        boolean flag = false;
+//        for (Character sign : operatorArr){
+//            if (last.equals(sign.toString())){ьт
+//                flag = true;
+//                break;
+//            }
+//        }
+        if (!lastOperand.contains(DOT.toString()) || !Character.isDigit(lastChar)){
             enterLine.setText(line.concat(DOT.toString()));
         }
     }
