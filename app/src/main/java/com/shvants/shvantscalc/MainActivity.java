@@ -1,7 +1,7 @@
 package com.shvants.shvantscalc;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,11 +11,9 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.Arrays;
 import java.util.Locale;
-import java.util.stream.Stream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     public static final String ZERO = "0";
     public static final String EQUAL = "=";
@@ -51,8 +49,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        displayLine = findViewById(R.id.displayLine);
-        enterLine = findViewById(R.id.enterLine);
+        if (savedInstanceState != null){
+            displayLine.setText(savedInstanceState.getString("display"));
+            enterLine.setText(savedInstanceState.getString("enter"));
+        } else {
+            displayLine = findViewById(R.id.displayLine);
+            enterLine = findViewById(R.id.enterLine);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("display", displayLine.toString());
+        outState.putString("enter", enterLine.toString());
     }
 
     public void clickNumber(View view){
