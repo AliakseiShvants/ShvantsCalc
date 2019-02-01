@@ -21,7 +21,7 @@
             android:weightSum="100"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/displayLine"
+                android:id="@+id/displayView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="40"
@@ -30,7 +30,7 @@
                 android:gravity="end"
                 tools:ignore="NestedWeights" />
             <TextView
-                android:id="@+id/enterLine"
+                android:id="@+id/enterView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="60"
