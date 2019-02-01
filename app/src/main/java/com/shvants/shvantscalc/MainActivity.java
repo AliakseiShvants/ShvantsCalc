@@ -26,8 +26,6 @@ public class MainActivity extends Activity {
 
     public static final Character MUL_SIGN = '*';
     public static final Character DIV_SIGN = '/';
-    public static final Character ADD_SIGN = '+';
-    public static final Character DIFF_SIGN = '-';
     public static final Character DOT = '.';
     public static final Character DIV_SIGN_UNICODE = '\u00f7';
     public static final Character MUL_SIGN_UNICODE = '\u00D7';
@@ -120,16 +118,6 @@ public class MainActivity extends Activity {
         String[] operands = line.split(SPLIT_PATTERN);
         String lastOperand = operands[operands.length - 1];
         Character lastChar = line.charAt(line.length() - 1);
-//        Character[] operatorArr = new Character[]{
-//                MUL_SIGN_UNICODE, DIV_SIGN_UNICODE, ADD_SIGN, DIFF_SIGN
-//        };
-//        boolean flag = false;
-//        for (Character sign : operatorArr){
-//            if (last.equals(sign.toString())){ьт
-//                flag = true;
-//                break;
-//            }
-//        }
         if (!lastOperand.contains(DOT.toString()) || !Character.isDigit(lastChar)){
             enterView.setText(line.concat(DOT.toString()));
         }
