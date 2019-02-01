@@ -39,74 +39,84 @@ public class MainActivity extends Activity {
     public static final int MEDIUM_LINE_LENGTH = 10;
     public static final int MAX_LINE_LENGTH = 15;
 
-    TextView displayLine;
-    TextView enterLine;
-    DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
-    DecimalFormat numberFormat = new DecimalFormat(PATTERN, otherSymbols);
+    private TextView displayView;
+    private TextView enterView;
+    private String displayLine;
+    private String enterLine;
+    private DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
+    private DecimalFormat numberFormat = new DecimalFormat(PATTERN, otherSymbols);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        displayView = findViewById(R.id.displayView);
+        enterView = findViewById(R.id.enterView);
+
         if (savedInstanceState != null){
-            displayLine.setText(savedInstanceState.getString("display"));
-            enterLine.setText(savedInstanceState.getString("enter"));
-        } else {
-            displayLine = findViewById(R.id.displayLine);
-            enterLine = findViewById(R.id.enterLine);
+            displayLine = savedInstanceState.getString("display");
+            enterLine = savedInstanceState.getString("enter");
+
+            displayView.setText(displayLine);
+            enterView.setText(enterLine);
         }
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putString("display", displayLine.toString());
-        outState.putString("enter", enterLine.toString());
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        displayLine = displayView.getText().toString();
+        enterLine = enterView.getText().toString();
+
+        savedInstanceState.putString("display", displayLine);
+        savedInstanceState.putString("enter", enterLine);
     }
 
     public void clickNumber(View view){
         Button button = (Button) view;
         String number = button.getText().toString();
-        String line = enterLine.getText().toString();
+        String line = enterView.getText().toString();
         Character last = line.charAt(line.length() - 1);
         int lastIndex = line.length() - 1;
 
         if (line.length() < MEDIUM_LINE_LENGTH){
-            enterLine.setTextSize(MAX_TEXT_SIZE);
+            enterView.setTextSize(MAX_TEXT_SIZE);
         } else if (line.length() < MAX_LINE_LENGTH){
-            enterLine.setTextSize(MEDIUM_TEXT_SIZE);
+            enterView.setTextSize(MEDIUM_TEXT_SIZE);
         } else {
-            enterLine.setTextSize(MIN_TEXT_SIZE);
+            enterView.setTextSize(MIN_TEXT_SIZE);
         }
 
         if (line.equals(UOE_MESSAGE) || line.equals(ZERO)){
-            enterLine.setText(number);
+            enterView.setText(number);
         }else if (last == ZERO.charAt(0)
                 && !Character.isDigit(line.charAt(line.length() - 2))
                 && line.charAt(line.length() - 2) != DOT){
-            enterLine.setText(line.substring(0, lastIndex).concat(number));
+            enterView.setText(line.substring(0, lastIndex).concat(number));
         }
         else if (last != PERCENT_SIGN.charAt(0)){
-            enterLine.setText(line.concat(number));
+            enterView.setText(line.concat(number));
         }
     }
 
     public void clickSign(View view){
         Button button = (Button) view;
         String sign = button.getText().toString();
-        String line = enterLine.getText().toString();
+        String line = enterView.getText().toString();
         int lastIndex = line.length() - 1;
         Character last = line.charAt(lastIndex);
 
         if (Character.isDigit(last)){
-            enterLine.setText(line.concat(sign));
+            enterView.setText(line.concat(sign));
         } else if (last != DOT && !Character.isDigit(line.charAt(lastIndex - 1))){
-            enterLine.setText(line.substring(0, lastIndex).concat(sign));
+            enterView.setText(line.substring(0, lastIndex).concat(sign));
         }
     }
 
     public void clickDot(View view){
-        String line = enterLine.getText().toString();
+        String line = enterView.getText().toString();
         String[] operands = line.split(SPLIT_PATTERN);
         String lastOperand = operands[operands.length - 1];
         Character lastChar = line.charAt(line.length() - 1);
@@ -121,30 +131,30 @@ public class MainActivity extends Activity {
 //            }
 //        }
         if (!lastOperand.contains(DOT.toString()) || !Character.isDigit(lastChar)){
-            enterLine.setText(line.concat(DOT.toString()));
+            enterView.setText(line.concat(DOT.toString()));
         }
     }
 
     public void clickCancel(View view){
-        enterLine.setText(ZERO);
+        enterView.setText(ZERO);
     }
 
     public void moveOneCharacter(View view){
-        String line = enterLine.getText().toString();
+        String line = enterView.getText().toString();
         if (line.length() == 1){
             clickCancel(view);
         } else {
-            enterLine.setText(line.substring(0, line.length() - 1));
+            enterView.setText(line.substring(0, line.length() - 1));
         }
     }
 
     public void clickEqual(View view){
         Double result;
-        String line = enterLine.getText().toString();
+        String line = enterView.getText().toString();
 
         if (line.equals(UOE_MESSAGE)){
-            enterLine.setTextSize(MAX_TEXT_SIZE);
-            enterLine.setText(ZERO);
+            enterView.setTextSize(MAX_TEXT_SIZE);
+            enterView.setText(ZERO);
             return;
         }
         String prepareLine = line.replace(DIV_SIGN_UNICODE, DIV_SIGN)
@@ -152,14 +162,14 @@ public class MainActivity extends Activity {
                 .replace(PERCENT_SIGN, ONE_PERCENT);
 
         if(prepareLine.contains(ZERO_DIV)){
-            displayLine.setText(line.concat(EQUAL));
-            enterLine.setText(UOE_MESSAGE);
-            enterLine.setTextSize(UOE_TEXT_SIZE);
+            displayView.setText(line.concat(EQUAL));
+            enterView.setText(UOE_MESSAGE);
+            enterView.setTextSize(UOE_TEXT_SIZE);
             return;
         }
         Expression expression = new ExpressionBuilder(prepareLine).build();
         result = expression.evaluate();
-        displayLine.setText(line.concat(EQUAL));
-        enterLine.setText(numberFormat.format(result));
+        displayView.setText(line.concat(EQUAL));
+        enterView.setText(numberFormat.format(result));
     }
 }
