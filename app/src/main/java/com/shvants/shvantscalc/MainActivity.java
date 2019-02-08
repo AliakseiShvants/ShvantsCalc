@@ -30,9 +30,12 @@ public class MainActivity extends Activity {
     public static final Character DIV_SIGN_UNICODE = '\u00f7';
     public static final Character MUL_SIGN_UNICODE = '\u00D7';
 
-    public static final int MAX_TEXT_SIZE = 50;
-    public static final int MEDIUM_TEXT_SIZE = 40;
-    public static final int MIN_TEXT_SIZE = 30;
+    public static final int MAX_ENTER_TEXT_SIZE = 50;
+    public static final int MEDIUM_ENTER_TEXT_SIZE = 40;
+    public static final int MIN_ENTER_TEXT_SIZE = 30;
+    public static final int MAX_DISPLAY_TEXT_SIZE = 40;
+    public static final int MEDIUM_DISPLAY_TEXT_SIZE = 30;
+    public static final int MIN_DISPLAY_TEXT_SIZE = 20;
     public static final int UOE_TEXT_SIZE = 25;
     public static final int MEDIUM_LINE_LENGTH = 10;
     public static final int MAX_LINE_LENGTH = 15;
@@ -79,14 +82,6 @@ public class MainActivity extends Activity {
         Character last = line.charAt(line.length() - 1);
         int lastIndex = line.length() - 1;
 
-        if (line.length() < MEDIUM_LINE_LENGTH){
-            enterView.setTextSize(MAX_TEXT_SIZE);
-        } else if (line.length() < MAX_LINE_LENGTH){
-            enterView.setTextSize(MEDIUM_TEXT_SIZE);
-        } else {
-            enterView.setTextSize(MIN_TEXT_SIZE);
-        }
-
         if (line.equals(UOE_MESSAGE) || line.equals(ZERO)){
             enterView.setText(number);
         }else if (last == ZERO.charAt(0)
@@ -96,6 +91,20 @@ public class MainActivity extends Activity {
         }
         else if (last != PERCENT_SIGN.charAt(0)){
             enterView.setText(line.concat(number));
+        }
+        setTextSize(enterView.getText().toString());
+    }
+
+    private void setTextSize(String line) {
+        if (line.length() < MEDIUM_LINE_LENGTH){
+            displayView.setTextSize(MAX_DISPLAY_TEXT_SIZE);
+            enterView.setTextSize(MAX_ENTER_TEXT_SIZE);
+        } else if (line.length() < MAX_LINE_LENGTH){
+            displayView.setTextSize(MEDIUM_DISPLAY_TEXT_SIZE);
+            enterView.setTextSize(MEDIUM_ENTER_TEXT_SIZE);
+        } else {
+            displayView.setTextSize(MIN_DISPLAY_TEXT_SIZE);
+            enterView.setTextSize(MIN_ENTER_TEXT_SIZE);
         }
     }
 
@@ -111,6 +120,7 @@ public class MainActivity extends Activity {
         } else if (last != DOT && !Character.isDigit(line.charAt(lastIndex - 1))){
             enterView.setText(line.substring(0, lastIndex).concat(sign));
         }
+        setTextSize(enterView.getText().toString());
     }
 
     public void clickDot(View view){
@@ -118,13 +128,14 @@ public class MainActivity extends Activity {
         String[] operands = line.split(SPLIT_PATTERN);
         String lastOperand = operands[operands.length - 1];
         Character lastChar = line.charAt(line.length() - 1);
-        if (!lastOperand.contains(DOT.toString()) || !Character.isDigit(lastChar)){
+        if (!lastOperand.contains(DOT.toString()) && Character.isDigit(lastChar)){
             enterView.setText(line.concat(DOT.toString()));
         }
     }
 
     public void clickCancel(View view){
         enterView.setText(ZERO);
+        setTextSize(enterView.getText().toString());
     }
 
     public void moveOneCharacter(View view){
@@ -134,6 +145,7 @@ public class MainActivity extends Activity {
         } else {
             enterView.setText(line.substring(0, line.length() - 1));
         }
+        setTextSize(enterView.getText().toString());
     }
 
     public void clickEqual(View view){
@@ -141,7 +153,7 @@ public class MainActivity extends Activity {
         String line = enterView.getText().toString();
 
         if (line.equals(UOE_MESSAGE)){
-            enterView.setTextSize(MAX_TEXT_SIZE);
+            enterView.setTextSize(MAX_ENTER_TEXT_SIZE);
             enterView.setText(ZERO);
             return;
         }
@@ -159,5 +171,7 @@ public class MainActivity extends Activity {
         result = expression.evaluate();
         displayView.setText(line.concat(EQUAL));
         enterView.setText(numberFormat.format(result));
+
+        setTextSize(enterView.getText().toString());
     }
 }
