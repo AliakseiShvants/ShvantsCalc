@@ -7,8 +7,8 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/displayView"
-        android:layout_width="0dp"
+        android:id="@+id/main_display_view"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:textColor="@android:color/darker_gray"
@@ -18,271 +18,271 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/enterView"
-        android:layout_width="0dp"
+        android:id="@+id/main_enter_view"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:text="@string/zero"
+        android:text="@string/MAIN_ZERO_BUTTON"
         android:textColor="@android:color/darker_gray"
         android:textSize="@dimen/enterMaxTextSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayView" />
+        app:layout_constraintTop_toBottomOf="@+id/main_display_view" />
 
     <TableLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/main_table_layout"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterView">
+        app:layout_constraintTop_toBottomOf="@+id/main_enter_view">
 
         <TableRow
-            android:id="@+id/firstRow"
+            android:id="@+id/first_table_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/cancel_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickCancel"
-                android:text="@string/cancel"
+                android:text="@string/MAIN_CANCEL_BUTTON"
                 android:textColor="@android:color/holo_orange_dark"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/delete_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="moveOneCharacter"
-                android:text="@string/leftShift"
+                android:text="@string/MAIN_BACKSPACE_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/percent_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickSign"
-                android:text="@string/percentSign"
+                android:text="@string/MAIN_PERCENT_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/div_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickSign"
-                android:text="@string/divSign"
+                android:text="@string/MAIN_DIVIDE_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/secondRow"
+            android:id="@+id/second_table_row"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/seven_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/seven"
+                android:text="@string/MAIN_SEVEN_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/eight_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/eight"
+                android:text="@string/MAIN_EIGHT_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/nine_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/nine"
+                android:text="@string/MAIN_NINE_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/mul_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickSign"
-                android:text="@string/mulSign"
+                android:text="@string/MAIN_MULTIPLY_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/thirdRow"
+            android:id="@+id/third_table_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/four_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/four"
+                android:text="@string/MAIN_FOUR_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/five_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/five"
+                android:text="@string/MAIN_FIVE_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/six_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/six"
+                android:text="@string/MAIN_SIX_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button12"
+                android:id="@+id/diff_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickSign"
-                android:text="@string/minusSign"
+                android:text="@string/MAIN_SUBTRACT_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/fourRow"
+            android:id="@+id/four_table_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button13"
+                android:id="@+id/one_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/one"
+                android:text="@string/MAIN_ONE_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button14"
+                android:id="@+id/two_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/two"
+                android:text="@string/MAIN_TWO_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button15"
+                android:id="@+id/three_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/three"
+                android:text="@string/MAIN_THREE_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button16"
+                android:id="@+id/add_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickSign"
-                android:text="@string/plusSign"
+                android:text="@string/MAIN_ADD_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
         </TableRow>
 
         <TableRow
-            android:id="@+id/fifthRow"
+            android:id="@+id/fifth_table_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button17"
+                android:id="@+id/zero_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:background="@drawable/button_border"
                 android:onClick="clickNumber"
-                android:text="@string/zero"
+                android:text="@string/MAIN_ZERO_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button19"
+                android:id="@+id/dot_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_border"
                 android:onClick="clickDot"
-                android:text="@string/dot"
+                android:text="@string/MAIN_DOT_BUTTON"
                 android:textSize="@dimen/displayMaxTextSize" />
 
             <Button
-                android:id="@+id/button20"
+                android:id="@+id/equal_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/zero"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/holo_orange_dark"
                 android:onClick="clickEqual"
-                android:text="@string/equalSign"
-                android:textColor="#ffffff"
+                android:text="@string/MAIN_EQUALS_BUTTON"
+                android:textColor="@color/white"
                 android:textSize="@dimen/displayMaxTextSize" />
         </TableRow>
     </TableLayout>
-
 </android.support.constraint.ConstraintLayout>

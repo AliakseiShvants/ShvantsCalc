@@ -1,22 +1,22 @@
 <resources>
-    <string name="app_name">Shvants Calc</string>
-    <string name="cancel">C</string>
-    <string name="leftShift">⇦</string>
-    <string name="percentSign">%</string>
-    <string name="divSign">÷</string>
-    <string name="seven">7</string>
-    <string name="eight">8</string>
-    <string name="nine">9</string>
-    <string name="mulSign">×</string>
-    <string name="four">4</string>
-    <string name="five">5</string>
-    <string name="six">6</string>
-    <string name="minusSign">-</string>
-    <string name="one">1</string>
-    <string name="two">2</string>
-    <string name="three">3</string>
-    <string name="plusSign">+</string>
-    <string name="zero">0</string>
-    <string name="dot">.</string>
-    <string name="equalSign">=</string>
+    <string name="APPLICATION_NAME">Shvants Calc</string>
+    <string name="MAIN_CANCEL_BUTTON">C</string>
+    <string name="MAIN_BACKSPACE_BUTTON">⇦</string>
+    <string name="MAIN_PERCENT_BUTTON">%</string>
+    <string name="MAIN_DIVIDE_BUTTON">÷</string>
+    <string name="MAIN_SEVEN_BUTTON">7</string>
+    <string name="MAIN_EIGHT_BUTTON">8</string>
+    <string name="MAIN_NINE_BUTTON">9</string>
+    <string name="MAIN_MULTIPLY_BUTTON">×</string>
+    <string name="MAIN_FOUR_BUTTON">4</string>
+    <string name="MAIN_FIVE_BUTTON">5</string>
+    <string name="MAIN_SIX_BUTTON">6</string>
+    <string name="MAIN_SUBTRACT_BUTTON">-</string>
+    <string name="MAIN_ONE_BUTTON">1</string>
+    <string name="MAIN_TWO_BUTTON">2</string>
+    <string name="MAIN_THREE_BUTTON">3</string>
+    <string name="MAIN_ADD_BUTTON">+</string>
+    <string name="MAIN_ZERO_BUTTON">0</string>
+    <string name="MAIN_DOT_BUTTON">.</string>
+    <string name="MAIN_EQUALS_BUTTON">=</string>
 </resources>
