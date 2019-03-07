@@ -13,6 +13,19 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+import static com.shvants.shvantscalc.Constants.MAX_DISPLAY_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.MAX_ENTER_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.MAX_LINE_LENGTH;
+import static com.shvants.shvantscalc.Constants.MEDIUM_DISPLAY_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.MEDIUM_ENTER_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.MEDIUM_LINE_LENGTH;
+import static com.shvants.shvantscalc.Constants.MIN_DISPLAY_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.MIN_ENTER_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.ONE;
+import static com.shvants.shvantscalc.Constants.TWO;
+import static com.shvants.shvantscalc.Constants.UOE_TEXT_SIZE;
+import static com.shvants.shvantscalc.Constants.ZERO;
+
 public class MainActivity extends Activity {
 
     public static final String EQUAL = "=";
@@ -31,19 +44,6 @@ public class MainActivity extends Activity {
     public static final Character DIV_SIGN_UNICODE = '\u00f7';
     public static final Character MUL_SIGN_UNICODE = '\u00D7';
     public static final Character ZERO_CHAR = '0';
-
-    public static final int MAX_ENTER_TEXT_SIZE = 50;
-    public static final int MEDIUM_ENTER_TEXT_SIZE = 40;
-    public static final int MIN_ENTER_TEXT_SIZE = 30;
-    public static final int MAX_DISPLAY_TEXT_SIZE = 40;
-    public static final int MEDIUM_DISPLAY_TEXT_SIZE = 30;
-    public static final int MIN_DISPLAY_TEXT_SIZE = 20;
-    public static final int UOE_TEXT_SIZE = 25;
-    public static final int MEDIUM_LINE_LENGTH = 10;
-    public static final int MAX_LINE_LENGTH = 15;
-    public static final int ONE = 1;
-    public static final int TWO = 2;
-    public static final int ZERO = 0;
 
     private TextView displayView;
     private TextView enterView;
@@ -84,8 +84,9 @@ public class MainActivity extends Activity {
         Button button = (Button) view;
         String number = button.getText().toString();
         String line = enterView.getText().toString();
-        char last = line.charAt(line.length() - ONE);
         int lastIndex = line.length() - ONE;
+        char last = line.charAt(lastIndex);
+
 
         if (line.equals(UOE_MESSAGE) || line.equals(ZERO_CHAR.toString())) {
             enterView.setText(number);
